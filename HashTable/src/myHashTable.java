@@ -19,7 +19,10 @@ public class myHashTable<K, V> {
     private int M = 11;
     private int size;
 
-    public myHashTable(){...}
+    public myHashTable(){
+        this.chainArray = new HashNode[M];
+        this.size = 0;
+    }
 
     public myHashTable(int M){...}
 
