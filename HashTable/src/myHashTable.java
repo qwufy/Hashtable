@@ -32,7 +32,7 @@ public class myHashTable<K, V> {
         this.size = 0;
     }
 
-    private int hash(K key) {
+    private int hash(K key) { //calculates the hash coed, and returns an index of the bucket where a key-value pair should be stored.
         return (key.hashCode() & 0x7fffffff) % M;
     }
 
@@ -52,7 +52,7 @@ public class myHashTable<K, V> {
         size++;
     }
 
-    public V get(K key){
+    public V get(K key){ // Retrieves the value associated with a given key 'key'
         int hash = hash(key);
         HashNode<K, V> node = chainArray[hash];
         while(node != null){
@@ -64,7 +64,7 @@ public class myHashTable<K, V> {
         return null;
     }
 
-    public V remove(K key) {
+    public V remove(K key) { //Removes a key-value pair from the hash table based on the given key 'key'
         int hash = hash(key);
         HashNode<K, V> node = chainArray[hash];
         HashNode<K, V> prev = null;
@@ -85,7 +85,7 @@ public class myHashTable<K, V> {
     }
 
 
-    public boolean contains(V value){
+    public boolean contains(V value){ //Checks if a given value value is present in the hash table.
         for(int i = 0; i < M; i++){
             HashNode<K, V> node = chainArray[i];
             while(node != null){
@@ -111,7 +111,7 @@ public class myHashTable<K, V> {
         return null;
     }
 
-    public void printBucketSizes(){
+    public void printBucketSizes(){ //Prints the number of elements in each bucket
         int[] sizes = new int[M];
         for(int i = 0; i < M; i++){
             HashNode<K, V> node = chainArray[i];
