@@ -85,7 +85,7 @@ public class myHashTable<K, V> {
     }
 
 
-    public boolean contains(V value){ //Checks if a given value value is present in the hash table.
+    public boolean contains(V value){ //Checks if a given value is present in the hash table.
         for(int i = 0; i < M; i++){
             HashNode<K, V> node = chainArray[i];
             while(node != null){
@@ -122,4 +122,28 @@ public class myHashTable<K, V> {
         }
         System.out.println(Arrays.toString(sizes));
     }
+
+    public boolean containsKey(K key) { //Defence for assignment 4. The method 'containsKey' checks if a given key is present in the hash table
+        int hash = hash(key);
+        HashNode<K, V> node = chainArray[hash];
+        while(node != null){
+            if(node.key.equals(key)){
+                return true;
+            }
+            node = node.next;
+        }
+        return false;
+    }
+
+    public int size() {
+        if (size == 0) {
+            System.out.println("The hast table is empty.");
+        } else {
+            return size;
+        }
+        return 0;
+    }
 }
+
+
+
